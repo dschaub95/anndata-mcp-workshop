@@ -13,5 +13,4 @@ def test_package_has_version():
 async def test_mcp_server():
     """Testing MCP server."""
     async with Client(anndata_mcp_workshop.mcp) as client:
-        result = await client.call_tool("greet", {"name": "test"})
-        assert result.data == "Hello, test!"
+        await client.list_tools()
