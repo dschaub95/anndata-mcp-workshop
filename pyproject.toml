@@ -3,7 +3,7 @@ build-backend = "hatchling.build"
 requires = [ "hatchling" ]
 
 [project]
-name = "anndata_mcp_workshop"
+name = "anndata-mcp-workshop"
 version = "0.0.1"
 description = "A very interesting piece of code"
 readme = "README.md"
@@ -25,9 +25,13 @@ dependencies = [
   # for debug logging (referenced from the issue template)
   # "session-info2",
   "click",
+  "dask>=2025.11",
   "fastmcp",
+  "scanpy>=1.11.5",
+  "xarray>=2025.11",
 ]
 optional-dependencies.dev = [
+  "jupyter",
   "pre-commit",
   "twine>=4.0.2",
 ]
@@ -40,12 +44,12 @@ optional-dependencies.doc = [
   # Until pybtex >0.24.0 releases: https://bitbucket.org/pybtex-devs/pybtex/issues/169/
   "setuptools",
   "sphinx>=8.1",
+  "sphinx-autoapi",
   "sphinx-book-theme>=1",
   "sphinx-copybutton",
   "sphinx-tabs",
   # "sphinxcontrib-bibtex>=1",
   "sphinxext-opengraph",
-  "sphinx-autoapi",
 ]
 optional-dependencies.test = [
   "coverage",
@@ -57,11 +61,12 @@ urls.Documentation = "https://anndata-mcp-workshop.readthedocs.io/"
 urls.Homepage = "https://github.com/dschaub95/anndata-mcp-workshop"
 urls.Source = "https://github.com/dschaub95/anndata-mcp-workshop"
 
+scripts."anndata-mcp-workshop" = "anndata_mcp_workshop.main:run_app"
+
 scripts.anndata_mcp_workshop = "anndata_mcp_workshop.main:run_app"
 
 [tool.hatch.build.targets.wheel]
 packages = [ "src/anndata_mcp_workshop" ]
-
 
 [tool.hatch.envs.default]
 installer = "uv"
