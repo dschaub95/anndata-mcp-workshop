@@ -27,6 +27,7 @@ dependencies = [
   "click",
   "dask>=2025.11",
   "fastmcp",
+  "httpx<1",
   "scanpy>=1.11.5",
   "xarray>=2025.11",
 ]
